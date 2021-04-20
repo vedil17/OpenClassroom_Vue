@@ -3,6 +3,7 @@
     <img class="menu-item__image" :src="image.source" :alt="image.alt"/>
     <div>
       <h3>{{ name }}</h3>
+      <p>Prix : {{ generatedPrice }}</p>
       <p v-if="inStock">En stock</p>
       <p v-else>En rupture de stock</p>
       <div>
@@ -17,6 +18,27 @@
 <script>
 export default {
   name: "MenuItem",
-  props: ["addToShoppingCart", "image", "name", "inStock", "quantity"]
+  props: ["addToShoppingCart", "image", "name", "price", "inStock", "quantity"],
+  data () {
+    return {
+      onsale: false
+    }
+  },
+  computed: {
+    generatedPrice () {
+      if (this.onsale) {
+        return (this.price*0.9).toFixed(2)
+      } else {
+        return this.price
+      }
+    }
+  },
+  beforeMount() {
+    const today = new Date().getDate()
+
+    if (today % 2 === 0) {
+      this.onsale = true
+    }
+  }
 }
 </script>

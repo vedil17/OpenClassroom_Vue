@@ -15,7 +15,8 @@
           :addToShoppingCart="addToShoppingCart"
           :name="item.name"
           :image="item.image"
-          v-model:quantity="item.quantity"
+          :price="item.price"
+          :quantity="item.quantity"
           :inStock="item.inStock"
           :key="item.name"
       />
@@ -25,16 +26,6 @@
       <h2>Panier : {{ shoppingCart }} articles</h2>
     </aside>
 
-    <h2>Contactez nous</h2>
-    <p>Adresse : {{ address }}</p>
-    <p>Téléphone : {{ phone }}</p>
-    <p>Email : {{ email }}</p>
-    <p>Horaires :</p>
-    <ul>
-      <li>L-V: 06:00 à 16:00</li>
-      <li>Samedi: 07:00 à 14:00</li>
-      <li>Dimanche: 07:00 à 12:00</li>
-    </ul>
     <footer class="footer">
       <p>{{ copyright }}</p>
     </footer>
@@ -42,17 +33,14 @@
 </template>
 
 <script>
-import MenuItem from "@/components/MenuItem"
+import MenuItem from "../components/MenuItem"
 export default {
-  name: "App",
+  name: "Home",
   components: {
     MenuItem
   },
   data() {
     return {
-      address: "18 avenue du Beurre, Paris, France",
-      email: "hello@cafewithavue.bakery",
-      phone: "01 88 88 88 88",
       restaurantName: "La belle vue",
       shoppingCart: 0,
       simpleMenu: [
@@ -63,7 +51,8 @@ export default {
             alt: "Un croissant"
           },
           inStock: true,
-          quantity: 1
+          quantity: 1,
+          price: 2.99
         },
         {
           name: "Baguette de pain",
@@ -72,7 +61,8 @@ export default {
             alt: "Quatre baguettes de pain"
           },
           inStock: true,
-          quantity: 1
+          quantity: 1,
+          price: 3.99
         },
         {
           name: "Éclair",
@@ -81,7 +71,8 @@ export default {
             alt: "Éclair au chocolat"
           },
           inStock: false,
-          quantity: 1
+          quantity: 1,
+          price: 4.99
         }
       ]
     }
@@ -99,14 +90,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
