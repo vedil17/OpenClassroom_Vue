@@ -17,7 +17,6 @@
 <script>
 export default {
   name: "MenuItem",
-  props: ["addToShoppingCart", "image", "name", "inStock", "quantity"],
-
+  props: ["addToShoppingCart", "image", "name", "inStock", "quantity"]
 }
 </script>
