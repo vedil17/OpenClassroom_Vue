@@ -9,15 +9,22 @@
       <div>
         <label for="add-item-quantity">Quantité : {{ quantity }}</label>
         <input v-model.number="this.$props.quantity" id="add-item-quantity" type="number"/>
-        <button @click="updateShoppingCart(quantity)">Ajouter au panier d'achat</button>
+        <BaseButton @click="updateShoppingCart(quantity)">
+          Ajouter au panier d'achat
+        </BaseButton>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseButton from "@/components/BaseButton";
+
 export default {
   name: "MenuItem",
+  components: {
+    BaseButton
+  },
   props: {
     image: {
       type: Object,
