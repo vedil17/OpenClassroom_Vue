@@ -44,8 +44,14 @@ export default createStore({
     }
   },
   mutations: {
+    ADD_ITEM_TO_SHOPPING_CART(state,amount) {
+      state.shoppingCart += amount
+    }
   },
   actions: {
+    updateShoppingCart({ commit },amount) {
+      commit("ADD_ITEM_TO_SHOPPING_CART", amount)
+    }
   },
   modules: {
   }
